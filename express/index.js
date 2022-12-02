@@ -1,6 +1,8 @@
 const express = require('express');
 const { server } = require('./src/config/config');
 const app =  express();
+const cookie = require('cookie-parser');
+const cors = require('cors');
 const categoryRoutes = require('./src/routes/category');
 const personRoutes = require('./src/routes/person');
 const notFoundRoutes = require('./src/routes/404');
@@ -8,6 +10,8 @@ const oracle = require('./src/utils/oracle');
 //const errorMiddelware = require('./src/middlewares/errorMiddelware');
 
 //middelware
+app.use(cors());
+app.use(cookie());
 app.use(express.json());
 
 //routes
