@@ -26,11 +26,12 @@ const getByID = async (req,res,next)=>{
 }
 //CREATE ---> POST
 const createCategory = async (req,res,next)=>{
-    //console.log(req.body);
+    console.log(req.person);
     if(!req.body.title || !req.body.body) {
         return res.status(400).json({ message: "missing to enter data"});
     }
     const args = {
+        person_id: req.person.id,
         title: req.body.title,
         body: req.body.body
     }

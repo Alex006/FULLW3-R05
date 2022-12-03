@@ -1,20 +1,18 @@
 const db = require('./../utils/db');
+const { pool } = require('./../utils/oracle');
 
-const create = ({title, body}) => {
-    return new Promise((resolve, reject)=>{
-        try {
-            db.push({
-                id: db[db.length - 1].id + 1,
-                title: title,
-                body: body
-            })
-            resolve();
-        } catch (error) {
-            reject(error);
-        }
-    });
-}
-
+const create = ({ person_id, title, body })=>{
+    const bindings = {
+        person_id,
+        title,
+        body,
+    };
+    const SQL_REGISTER_CATEGORY = `
+    INSERT INTO CATEGORY (ID,PERSON_ID,TITLE,TEXT)
+    VALUES(SQ_CATEGORY.NEXTVAL, :person_id, :title, :body)
+    `;
+    return pool(SQL_REGISTER_CATEGORY, bindings, { autoCommit: true });
+ }
 const findAll = () => {
     return new Promise((resolve, reject)=>{
         try {

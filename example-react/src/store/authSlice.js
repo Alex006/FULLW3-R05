@@ -13,7 +13,7 @@ export const registerAsync = createAsyncThunk(
             });
             const responseJson = await response.json();
             console.log(responseJson);
-            localStorage.setItem('app_token', responseJson.person_token);
+            //localStorage.setItem('app_token', responseJson.person_token);
             return {
                 isAuth: true,
                 email: responseJson.email,

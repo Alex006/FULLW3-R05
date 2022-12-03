@@ -19,14 +19,14 @@ module.exports.registePerson = async (req, res, next) => {
       person_token: person_token[0],
     });
   } catch (error) {
-    res.status(400).json({ error: error });
+    res.status(400).clearCookie('auth_token').json({ error: error });
     //next(error);
   }
 };
 
 //login
 module.exports.loginPerson = async (req, res, next) => {
-  //console.log('Cookies: ', req.cookies)
+  console.log('Cookies: ', req.cookies)
   const args = {
     email: req.body.email,
     password: req.body.password,
@@ -55,7 +55,7 @@ module.exports.loginPerson = async (req, res, next) => {
       message: "datos no validos.",
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(400).clearCookie('auth_token').json({
       error: error,
     });
   }
