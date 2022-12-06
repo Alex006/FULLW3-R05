@@ -79,3 +79,32 @@ BEGIN
 	RETURN VRESULT;
 END API_TOKEN;
 ```
+# comandor para abrir DB
+
+```
+sqlplus / as sysdba
+ALTER PLUGGABLE DATABASE ORCLPDB OPEN;
+
+```
+
+# comandor para crear usuario para DB
+
+```
+
+sqlplus
+
+//hay que posisionarnos en la DB que queremos crear el usuario la mia se llama orclpdb
+
+ALTER SESSION SET CONTAINER = orclpdb; 
+
+CREATE USER "usuario" IDENTIFIED BY "password" CONTAINER=CURRENT;
+
+//debemos agregarle los permisos al usuario para crear, modificar, etc.
+
+GRANT ALL PRIVILEGES TO "usuario" CONTAINER=CURRENT;
+
+//tambien se puede limitar la cantidad de request que hace un usuario para este uso daremos ilimitado
+
+ALTER USER "usuario" DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA UNLIMITED ON users;
+
+```
