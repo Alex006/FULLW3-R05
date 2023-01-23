@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 //views
 import Dashboard from './views/Dashboard/Dasboard';
+import Category from './views/Category/Category';
 import MainPage from './views/MainPage/MainPage';
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
@@ -15,6 +16,7 @@ function App() {
   <Routes>
     <Route path='/' element={<MainPage/>}/>
     <Route path='/dashboard' element={<Dashboard/>}/>
+    <Route path='/category' element={<Category/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='*' element={<NotFound/>}/>

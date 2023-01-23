@@ -2,7 +2,7 @@ const oracledb = require('oracledb');
 const path = require('path');
 const {oracleConfig} = require('./../config/config');
 //path to client
-const clientPath = path.join('C:','oracle_w64','db_home','bin');
+const clientPath = path.join('C:','oracle','product','instantclient_21_8');
 
 //init client
 oracledb.initOracleClient({ libDir:clientPath });
